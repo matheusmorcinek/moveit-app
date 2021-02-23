@@ -4,10 +4,13 @@ export function Profile() {
 
     return (
         <div className={styles.profileContainer}>
-            <img src='https://github.com/matheusmorcinek.png' alt='Profile photo'/>
+            <img src='https://github.com/matheusmorcinek.png' alt='Profile photo' />
             <div>
                 <strong>Matheus Morcinek</strong>
-                <p>Level 1</p>
+                <p>
+                    <img src='icons/level.svg' alt='Level icon'/>
+                    Level 1
+                    </p>
             </div>
         </div>
     );
