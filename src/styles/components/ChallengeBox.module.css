@@ -1,4 +1,4 @@
-.challangeBoxContainer {
+.ChallengeBoxContainer {
     height: 100%;
 
     background: var(--white);
@@ -14,19 +14,19 @@
     text-align: center;
 }
 
-.challangeNotActive {
+.ChallengeNotActive {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.challangeNotActive strong {
+.ChallengeNotActive strong {
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 1.4;
 }
 
-.challangeNotActive p {
+.ChallengeNotActive p {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,18 +35,18 @@
     margin-top: 3rem;
 }
 
-.challangeNotActive p img {
+.ChallengeNotActive p img {
     margin-bottom: 1rem;
 }
 
-.challangeActive {
+.ChallengeActive {
     height: 100%;
 
     display: flex;
     flex-direction: column;
 }
 
-.challangeActive header {
+.ChallengeActive header {
     color: var(--blue);
     font-weight: 600;
     font-size: 1.25rem;
@@ -54,7 +54,7 @@
     border-bottom: solid 1px var(--gray-line);
 }
 
-.challangeActive main {
+.ChallengeActive main {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -62,18 +62,18 @@
     justify-content: center;
 }
 
-.challangeActive main strong {
+.ChallengeActive main strong {
     font-size: 2rem;
     font-weight: 600;
     color: var(--title);
     margin: 1.5rem 0 1rem;
 }
 
-.challangeActive main p {
+.ChallengeActive main p {
     line-height: 1.5rem;
 }
 
-.challangeActive footer {
+.ChallengeActive footer {
     display: grid;
     /* grid-template-columns: 1fr 1fr;
    ouuu com repeat(numero_colunas, tamanho)
@@ -82,7 +82,7 @@
     gap: 1rem;
 }
 
-.challangeActive footer button {
+.ChallengeActive footer button {
     height: 3rem;
 
     display: flex;
@@ -100,14 +100,14 @@
     transition: filter 0.2s;
 }
 
-.challangeActive footer button.challangeFailedButton {
+.ChallengeActive footer button.ChallengeFailedButton {
     background: var(--red);
 }
 
-.challangeActive footer button.challangeSucceededButton {
+.ChallengeActive footer button.ChallengeSucceededButton {
     background: var(--green);
 }
 
-.challangeActive footer button:hover {
+.ChallengeActive footer button:hover {
     filter: brightness(0.9);
 }

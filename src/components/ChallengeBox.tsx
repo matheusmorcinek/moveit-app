@@ -1,46 +1,46 @@
 
 import { useContext } from 'react';
-import { ChallangesContext } from '../contexts/ChallangeContext';
-import styles from '../styles/components/ChallangeBox.module.css';
+import { ChallengesContext } from '../contexts/ChallengeContext';
+import styles from '../styles/components/ChallengeBox.module.css';
 
-export function ChallangeBox() {
+export function ChallengeBox() {
 
-    const { activeChallange } = useContext(ChallangesContext);
+    const { activeChallenge } = useContext(ChallengesContext);
     
     return (
-        <div className={styles.challangeBoxContainer}>
+        <div className={styles.ChallengeBoxContainer}>
 
             {
-                activeChallange ?
+                activeChallenge ?
                     (
-                        <div className={styles.challangeActive}>
+                        <div className={styles.ChallengeActive}>
 
                             <header>
-                                Ganhe {activeChallange.amount} xp
+                                Ganhe {activeChallenge.amount} xp
                             </header>
 
                             <main>
-                                <img src={`icons/${activeChallange.type}.svg`} />
+                                <img src={`icons/${activeChallenge.type}.svg`} />
                                 <strong>Novo desafio</strong>
-                                <p>{activeChallange.description}</p>
+                                <p>{activeChallenge.description}</p>
                             </main>
 
                             <footer>
                                 <button
                                     type='button'
-                                    className={styles.challangeFailedButton}>
+                                    className={styles.ChallengeFailedButton}>
                                     Falhei
                                 </button>
                                 <button
                                     type='button'
-                                    className={styles.challangeSucceededButton}>
+                                    className={styles.ChallengeSucceededButton}>
                                     Completei
                                 </button>
                             </footer>
                         </div>
                     ) :
                     (
-                        <div className={styles.challangeNotActive}>
+                        <div className={styles.ChallengeNotActive}>
 
                             <strong>Finalize um ciclo para receber um desafio.</strong>
                             <p>
