@@ -5,26 +5,24 @@ import styles from '../styles/components/ChallangeBox.module.css';
 
 export function ChallangeBox() {
 
-    const contextData = useContext(ChallangesContext);
-    console.log(contextData);
-
-    const hasActiveChallange = true;
-
+    const { activeChallange } = useContext(ChallangesContext);
+    
     return (
         <div className={styles.challangeBoxContainer}>
 
             {
-                hasActiveChallange ?
+                activeChallange ?
                     (
                         <div className={styles.challangeActive}>
 
                             <header>
-                                Ganhe 400 xp
+                                Ganhe {activeChallange.amount} xp
                             </header>
 
                             <main>
-                                <img src='icons/body.svg' />
-                                <p>Levante e faça uma caminhada de 3 minutos.</p>
+                                <img src={`icons/${activeChallange.type}.svg`} />
+                                <strong>Novo desafio</strong>
+                                <p>{activeChallange.description}</p>
                             </main>
 
                             <footer>
