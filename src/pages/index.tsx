@@ -6,6 +6,7 @@ import { Profile } from "../components/Profile";
 import styles from '../styles/pages/Home.module.css';
 
 import Head from 'next/head';
+import { ChallangeBox } from "../components/ChallangeBox";
 
 export default function Home() {
   return (
@@ -23,7 +24,9 @@ export default function Home() {
           <CompletedChallenges />
           <Countdown />
         </div>
-        <div></div>
+        <div>
+          <ChallangeBox />
+        </div>
       </section>
     </div>
   )
