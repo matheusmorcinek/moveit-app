@@ -38,7 +38,7 @@
     margin: 0 0.5rem;
 }
 
-.CountDownButton {
+.countDownButton {
     width: 100%;
     height: 5rem;
 
@@ -61,6 +61,22 @@
     transition: background-color 0.2s;
 }
 
-.CountDownButton:hover{
+.countDownButton:not(:disabled):hover {
     background: var(--blue-dark);
+}
+
+.countdownButtonActive {
+    background: var(--white);
+    color: var(--title);
+}
+
+.countdownButtonActive:not(:disabled):hover {
+    background: var(--red);
+    color: var(--white);
+}
+
+.countDownButton:disabled {
+    background: var(--white);
+    color: var(--text);
+    cursor: not-allowed;
 }
