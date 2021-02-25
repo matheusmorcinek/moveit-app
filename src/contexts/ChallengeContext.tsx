@@ -38,6 +38,7 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
     //toda vez que algo mudar, executamos uma função. Side effects...
     useEffect(() => {
 
+        //https://developer.mozilla.org/en-US/docs/Web/API/Notification
         Notification.requestPermission();
     }, []);
     //obs: quando um useEffect tem o segundo parametro vazio, ele será executando UMA unica vez quando o componente é exibido em tela.
@@ -53,6 +54,8 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
         const challenge = Challenges[ramdomChallengeIndex];
 
         setActiveChallenge(challenge);
+
+        new Audio('/notification.mp3').play();
 
         if (Notification.permission === 'granted') {
 
