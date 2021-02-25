@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode } from 'react';
+import { createContext, useState, ReactNode, useEffect } from 'react';
 import Challenges from '../../challenges.json';
 
 interface ChallengesProviderProps {
@@ -35,6 +35,13 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
 
     const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
+    //toda vez que algo mudar, executamos uma função. Side effects...
+    useEffect(() => {
+
+        Notification.requestPermission();
+    }, []);
+    //obs: quando um useEffect tem o segundo parametro vazio, ele será executando UMA unica vez quando o componente é exibido em tela.
+
     function levelUp() {
         setLevel(level + 1);
     }
@@ -43,12 +50,16 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
 
         const ramdomChallengeIndex = Math.floor(Math.random() * Challenges.length);
 
-        const Challenge = Challenges[ramdomChallengeIndex];
+        const challenge = Challenges[ramdomChallengeIndex];
 
-        setActiveChallenge(Challenge);
+        setActiveChallenge(challenge);
 
-        console.log('New Challenge');
-        console.log(Challenge);
+        if (Notification.permission === 'granted') {
+
+            new Notification('Novo desafio 🎉', {
+                body: `Valendo ${challenge.amount}xp!`
+            });
+        }
     }
 
     function resetChallenge() {
@@ -64,7 +75,7 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
         const { amount } = activeChallenge;
         let finalExperience = currentExperience + amount;
 
-        if (finalExperience >= experienceToNextLevel){
+        if (finalExperience >= experienceToNextLevel) {
 
             finalExperience = finalExperience - experienceToNextLevel;
             levelUp();
