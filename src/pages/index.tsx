@@ -9,7 +9,13 @@ import Head from 'next/head';
 import { ChallengeBox } from "../components/ChallengeBox";
 import { CountdownProvider } from "../contexts/CountdownContext";
 
-export default function Home() {
+import { GetServerSideProps } from 'next';
+
+export default function Home(props) {
+
+  console.log('a partir daqui já vai estar aparecendo no console do browser...');
+  console.log(props);
+
   return (
     <div className={styles.container}>
 
@@ -33,4 +39,26 @@ export default function Home() {
       </CountdownProvider>
     </div>
   )
+}
+
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+
+  //por exemplo uma chamada api
+  console.log('rodando no Next.js dentro do servidor Node...');
+
+  // const cookies = context.req.cookies;
+  const { level, currentExperience, challengesCompleted } = context.req.cookies;
+
+  const user = {
+    level: level,
+    currentExperience: currentExperience,
+    challangesCompleted: challengesCompleted
+  };
+
+
+  return {
+
+    props: user
+  }
 }
