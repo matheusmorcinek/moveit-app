@@ -10,34 +10,47 @@ import { ChallengeBox } from "../components/ChallengeBox";
 import { CountdownProvider } from "../contexts/CountdownContext";
 
 import { GetServerSideProps } from 'next';
+import { ChallengesProvider } from "../contexts/ChallengeContext";
 
-export default function Home(props) {
+interface HomeProps {
+  level: number,
+  currentExperience: number,
+  challengesCompleted: number
+}
+
+export default function Home(props: HomeProps) {
 
   console.log('a partir daqui já vai estar aparecendo no console do browser...');
   console.log(props);
 
   return (
-    <div className={styles.container}>
+    <ChallengesProvider
+      level={props.level}
+      currentExperience={props.currentExperience}
+      challengesCompleted={props.challengesCompleted}
+    >
+      <div className={styles.container}>
 
-      <Head>
-        <title>Início | Move.it</title>
-      </Head>
+        <Head>
+          <title>Início | Move.it</title>
+        </Head>
 
-      <ExperienceBar></ExperienceBar>
+        <ExperienceBar></ExperienceBar>
 
-      <CountdownProvider>
-        <section>
-          <div>
-            <Profile />
-            <CompletedChallenges />
-            <Countdown />
-          </div>
-          <div>
-            <ChallengeBox />
-          </div>
-        </section>
-      </CountdownProvider>
-    </div>
+        <CountdownProvider>
+          <section>
+            <div>
+              <Profile />
+              <CompletedChallenges />
+              <Countdown />
+            </div>
+            <div>
+              <ChallengeBox />
+            </div>
+          </section>
+        </CountdownProvider>
+      </div>
+    </ChallengesProvider>
   )
 }
 
@@ -50,15 +63,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // const cookies = context.req.cookies;
   const { level, currentExperience, challengesCompleted } = context.req.cookies;
 
-  const user = {
-    level: level,
-    currentExperience: currentExperience,
-    challangesCompleted: challengesCompleted
-  };
+  // const user = {
+  //   level: level,
+  //   currentExperience: currentExperience,
+  //   challangesCompleted: challengesCompleted
+  // };
 
 
   return {
 
-    props: user
+    props: {
+      level: Number(level),
+      currentExperience: Number(currentExperience),
+      challengesCompleted: Number(challengesCompleted)
+    }
   }
 }
