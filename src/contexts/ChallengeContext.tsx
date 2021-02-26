@@ -1,5 +1,6 @@
 import { createContext, useState, ReactNode, useEffect } from 'react';
 import Challenges from '../../challenges.json';
+import Cookies from 'js-cookie';
 
 interface ChallengesProviderProps {
     children: ReactNode
@@ -42,6 +43,12 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
         Notification.requestPermission();
     }, []);
     //obs: quando um useEffect tem o segundo parametro vazio, ele será executando UMA unica vez quando o componente é exibido em tela.
+
+    useEffect(() => {
+
+
+    }, [level, currentExperience, challengesCompleted]);
+    //Uma função será executada sempre que level for alterado ou currentExperience ouu challangesCompleted.
 
     function levelUp() {
         setLevel(level + 1);
