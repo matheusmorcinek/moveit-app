@@ -1,0 +1,61 @@
+.container {
+    position: absolute;
+    height: 100%;
+    width: auto;
+    max-width: 14rem;
+    min-width: 5rem;
+    min-height: 20rem;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-width: 0.15rem;
+    border-style: solid;
+    border-image:
+        linear-gradient(to top,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0)) 1 100%;
+}
+
+.container>img {
+    position: absolute;
+    top: 0;
+    margin: 2rem;
+}
+
+.container button {
+    background: transparent;
+    border: 0;
+    font-size: 0;
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: inherit;
+}
+
+.container button:nth-child(2):hover {
+    background-image: url('/icons/home-hover.svg');
+}
+
+.container button:nth-child(2):hover > div{
+    display: initial;
+}
+
+.container button:nth-child(3):hover {
+    background-image: url('/icons/leaderboard-hover.svg');
+}
+
+.container button:nth-child(3):hover > div{
+    display: initial;
+}
+
+.container .selected {
+    height: 3rem;
+    width: 0.15rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background: var(--blue-dark);
+    position: absolute;
+    left: 0;
+    display: none;
+}
