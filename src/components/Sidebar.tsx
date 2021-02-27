@@ -19,6 +19,10 @@ export function Sidebar() {
                 <div className={styles.selected}></div>
             </button>
 
+            <button type='button' className={styles.settings}>
 
+                <img src='/icons/settings.svg' alt='Settings icon'></img>
+                <div className={styles.selected}></div>
+            </button>
         </div>);
 }
